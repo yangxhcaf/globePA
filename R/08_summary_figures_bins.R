@@ -100,14 +100,23 @@ ter_dat %>% ggplot(aes(x = var, y=perc, fill=iucn_cat)) +
 # Test if area adds up to 100 %
 area_val %>% summarise(sum(perc_area))
 
-# 
-# Area per cell = 860050 m2
-# Number of cells = 160809717
-# Total area (m2) = 1.383044e+14
-# Total area (km2) = 138304400
+# Area per cell
+(area_cell <- 860050) #m2
+
+# Number of cells
+(number_cells <- unique(tot_sum$sum))
+
+# Total area (m2)
+(tot_area <- area_cell*number_cells)
+
+# Total area (km2)
+tot_area/1000000
+
+# Total area (10000 km2)
+tot_area10000 <- tot_area/(1000000*10000)
 
 # Total area in 10000 km2
-area_val %>% summarise(sum(perc_area*13830.44))
+area_val %>% summarise(sum(perc_area*tot_area10000))
 
 ####################
 
@@ -238,14 +247,23 @@ marspec_dat %>%
 # Test if area adds up to 100 %
 area_val %>% summarise(sum(perc_area))
 
-# 
-# Area per cell = 860050 m2
-# Number of cells = 421197812
-# Total area (m2) = 3.622512e+14
-# Total area (km2) =362251200
+# Area per cell
+(area_cell <- 860050) #m2
+
+# Number of cells
+(number_cells <- unique(tot_sum$sum))
+
+# Total area (m2)
+(tot_area <- area_cell*number_cells)
+
+# Total area (km2)
+tot_area/1000000
+
+# Total area (10000 km2)
+tot_area10000 <- tot_area/(1000000*10000)
 
 # Total area in 10000 km2
-area_val %>% summarise(sum(perc_area*362251.2))
+area_val %>% summarise(sum(perc_area*tot_area10000))
 
 ####################
 
